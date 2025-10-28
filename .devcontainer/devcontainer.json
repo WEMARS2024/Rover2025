@@ -1,0 +1,44 @@
+{
+  "name": "Rover2025",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "..",
+    "args": {
+      "UID": "1000",
+      "GID": "1000",
+      "ROS_DISTRO": "humble"
+    }
+  },
+  "runArgs": [
+    "--net=host",
+    "--ipc=host",
+    "--privileged",
+    "--env=DISPLAY",
+    "--volume=/tmp/.X11-unix:/tmp/.X11-unix:rw",
+    "--volume=/dev:/dev",
+    "--device-cgroup-rule=c 189:* rmw", 
+    "--device-cgroup-rule=c 166:* rmw",
+    "--cap-add=SYS_PTRACE"
+  ],
+  "remoteUser": "vscode",
+  "workspaceFolder": "/workspaces/ros2-ws",
+  "mounts": [
+    "type=bind,source=${localWorkspaceFolder},target=/workspaces/ros2-ws"
+  ],
+  "postCreateCommand": "bash .devcontainer/postCreate.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-iot.vscode-ros",
+        "twxs.cmake",
+        "ms-vscode.cpptools-extension-pack",
+        "ms-azuretools.vscode-docker",
+        "njpwerner.autodocstring",
+        "streetsidesoftware.code-spell-checker"
+      ]
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {}
+  }
+}
