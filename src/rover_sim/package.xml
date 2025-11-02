@@ -7,6 +7,14 @@
   <maintainer email="huzzuhan7@gmail.com">vscode</maintainer>
   <license>TODO: License declaration</license>
 
+  <depend>rover_description</depend>
+  <depend>xacro</depend>
+  <depend>ros2_control</depend>
+  <depend>gz_ros2_control</depend>
+  <depend>ros_ign_gazebo</depend>
+  <depend>ros_gz_sim</depend>
+  <depend>ros_gz_bridge</depend>
+
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>
   <test_depend>ament_pep257</test_depend>
