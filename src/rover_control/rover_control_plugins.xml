@@ -1,0 +1,10 @@
+<library path="rover_can_hardware">
+  <class
+    name="rover_control/RoverCanHardware"
+    type="rover_control::RoverCanHardware"
+    base_class_type="hardware_interface::SystemInterface">
+    <description>
+      CAN-based hardware interface for a four-wheel rover.
+    </description>
+  </class>
+</library>

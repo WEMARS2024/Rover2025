@@ -7,9 +7,25 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
-# uncomment the following section in order to fill in
-# further dependencies manually.
-# find_package(<dependency> REQUIRED)
+find_package(hardware_interface REQUIRED)
+find_package(pluginlib REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(rclcpp_lifecycle REQUIRED)
+
+add_library(rover_can_hardware SHARED
+  src/rover_can_hardware.cpp
+)
+target_include_directories(rover_can_hardware PRIVATE
+  include
+)
+ament_target_dependencies(rover_can_hardware
+  hardware_interface
+  pluginlib
+  rclcpp
+  rclcpp_lifecycle
+)
+
+pluginlib_export_plugin_description_file(hardware_interface rover_control_plugins.xml)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -22,5 +38,35 @@ if(BUILD_TESTING)
   set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
 endif()
+
+install(
+  TARGETS rover_can_hardware
+  EXPORT export_rover_control
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION bin
+)
+
+install(DIRECTORY include/
+  DESTINATION include
+)
+
+install(
+  FILES rover_control_plugins.xml
+  DESTINATION share/${PROJECT_NAME}
+)
+
+install(
+  DIRECTORY config launch urdf
+  DESTINATION share/${PROJECT_NAME}
+)
+
+ament_export_targets(export_rover_control HAS_LIBRARY_TARGET)
+ament_export_dependencies(
+  hardware_interface
+  pluginlib
+  rclcpp
+  rclcpp_lifecycle
+)
 
 ament_package()

@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="rover">
+  <xacro:include filename="$(find rover_description)/urdf/rover_base.xacro.urdf"/>
+
+  <xacro:arg name="can_interface" default="can0"/>
+  <xacro:arg name="front_left_can_id" default="1"/>
+  <xacro:arg name="front_right_can_id" default="2"/>
+  <xacro:arg name="rear_left_can_id" default="3"/>
+  <xacro:arg name="rear_right_can_id" default="4"/>
+
+  <ros2_control name="RoverCanSystem" type="system">
+    <hardware>
+      <plugin>rover_control/RoverCanHardware</plugin>
+      <param name="can_interface">$(arg can_interface)</param>
+      <param name="front_left_can_id">$(arg front_left_can_id)</param>
+      <param name="front_right_can_id">$(arg front_right_can_id)</param>
+      <param name="rear_left_can_id">$(arg rear_left_can_id)</param>
+      <param name="rear_right_can_id">$(arg rear_right_can_id)</param>
+    </hardware>
+
+    <joint name="front_left_wheel_joint">
+      <command_interface name="velocity">
+        <param name="min">-20.0</param>
+        <param name="max">20.0</param>
+      </command_interface>
+      <state_interface name="velocity"/>
+      <state_interface name="position"/>
+    </joint>
+    <joint name="rear_left_wheel_joint">
+      <command_interface name="velocity">
+        <param name="min">-20.0</param>
+        <param name="max">20.0</param>
+      </command_interface>
+      <state_interface name="velocity"/>
+      <state_interface name="position"/>
+    </joint>
+    <joint name="front_right_wheel_joint">
+      <command_interface name="velocity">
+        <param name="min">-20.0</param>
+        <param name="max">20.0</param>
+      </command_interface>
+      <state_interface name="velocity"/>
+      <state_interface name="position"/>
+    </joint>
+    <joint name="rear_right_wheel_joint">
+      <command_interface name="velocity">
+        <param name="min">-20.0</param>
+        <param name="max">20.0</param>
+      </command_interface>
+      <state_interface name="velocity"/>
+      <state_interface name="position"/>
+    </joint>
+  </ros2_control>
+</robot>
