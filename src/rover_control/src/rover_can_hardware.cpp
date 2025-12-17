@@ -226,10 +226,19 @@ return_type RoverCanHardware::write(const rclcpp::Time &, const rclcpp::Duration
   {
     joint.vel = joint.cmd_vel;
 
-    if (can_connected_ && !send_velocity_command(joint))
+    if (can_connected_)
     {
-      RCLCPP_WARN(
-        logger_, "Failed sending velocity command for '%s' (id %d)", joint.name.c_str(), joint.can_id);
+      if (!send_heartbeat(joint))
+      {
+        RCLCPP_WARN(
+          logger_, "Failed sending heartbeat for '%s' (id %d)", joint.name.c_str(), joint.can_id);
+      }
+
+      if (!send_velocity_command(joint))
+      {
+        RCLCPP_WARN(
+          logger_, "Failed sending velocity command for '%s' (id %d)", joint.name.c_str(), joint.can_id);
+      }
     }
   }
 
@@ -315,6 +324,40 @@ bool RoverCanHardware::send_velocity_command(const JointData & joint)
     frame_string, sizeof(frame_string), "%08X#%02X%02X%02X%02X00000000",
     arbitration_id, frame.data[0], frame.data[1], frame.data[2], frame.data[3]);
   RCLCPP_DEBUG(logger_, "CAN frame %s", frame_string);
+  return true;
+}
+
+bool RoverCanHardware::send_heartbeat(const JointData & joint)
+{
+  if (can_socket_ < 0)
+  {
+    return false;
+  }
+
+  const uint32_t arbitration_id = 0x02052C80U + static_cast<uint32_t>(joint.can_id);
+  struct can_frame frame
+  {
+  };
+  std::memset(&frame, 0, sizeof(frame));
+  frame.can_id = static_cast<canid_t>(arbitration_id);
+  frame.can_dlc = 8;
+  frame.data[0] = 0x7E;
+  frame.data[7] = 0x80;
+
+  const ssize_t bytes = ::write(can_socket_, &frame, sizeof(frame));
+  if (bytes != static_cast<ssize_t>(sizeof(frame)))
+  {
+    RCLCPP_ERROR(
+      logger_, "SocketCAN heartbeat write failed for '%s': %s",
+      joint.name.c_str(), std::strerror(errno));
+    return false;
+  }
+
+  char frame_string[8 + 1 + 16 + 1]{0};
+  std::snprintf(
+    frame_string, sizeof(frame_string), "%08X#%02X000000000000%02X",
+    arbitration_id, frame.data[0], frame.data[7]);
+  RCLCPP_DEBUG(logger_, "CAN heartbeat frame %s", frame_string);
   return true;
 }
 

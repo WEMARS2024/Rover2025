@@ -52,6 +52,7 @@ private:
 
   bool connect_can_interface();
   bool send_velocity_command(const JointData & joint);
+  bool send_heartbeat(const JointData & joint);
   bool read_joint_state(JointData & joint);
   std::array<JointData, 4> joints_;
   std::string can_interface_name_{"can0"};
