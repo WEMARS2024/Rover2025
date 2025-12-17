@@ -306,7 +306,7 @@ bool RoverCanHardware::send_velocity_command(const JointData & joint)
   {
   };
   std::memset(&frame, 0, sizeof(frame));
-  frame.can_id = static_cast<canid_t>(arbitration_id);
+  frame.can_id = static_cast<canid_t>(arbitration_id | CAN_EFF_FLAG);
   frame.can_dlc = 8;
   std::memcpy(frame.data, &velocity, sizeof(float));
 
@@ -339,7 +339,7 @@ bool RoverCanHardware::send_heartbeat(const JointData & joint)
   {
   };
   std::memset(&frame, 0, sizeof(frame));
-  frame.can_id = static_cast<canid_t>(arbitration_id);
+  frame.can_id = static_cast<canid_t>(arbitration_id | CAN_EFF_FLAG);
   frame.can_dlc = 8;
   frame.data[0] = 0x7E;
   frame.data[7] = 0x80;
@@ -358,6 +358,13 @@ bool RoverCanHardware::send_heartbeat(const JointData & joint)
     frame_string, sizeof(frame_string), "%08X#%02X000000000000%02X",
     arbitration_id, frame.data[0], frame.data[7]);
   RCLCPP_DEBUG(logger_, "CAN heartbeat frame %s", frame_string);
+  return true;
+}
+
+bool RoverCanHardware::read_joint_state(JointData & joint)
+{
+  (void)joint;
+  // TODO(wemars): Implement once encoder feedback over CAN is supported.
   return true;
 }
 
