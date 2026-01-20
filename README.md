@@ -5,33 +5,33 @@ tbd
 
 # All Subtask Repos
 ## Software
-[Cameras](https://github.com/WEMARS2024/Software_Cameras)
-[Website](https://github.com/WEMARS2024/Software_Website)
-[IMU Simulation](https://github.com/WEMARS2024/Software_IMU_Simulation)
-[CANCode](https://github.com/WEMARS2024/Software_CANCode)
-[ROS2 Packages](https://github.com/WEMARS2024/Software_ROS2_Packages)
-[Drive Station](https://github.com/WEMARS2024/Software_Drive_Station)
-[IMU](https://github.com/WEMARS2024/Software_IMU)
-[Radios](https://github.com/WEMARS2024/Software_Radios)
-[GPS](https://github.com/WEMARS2024/Software_GPS)
-[Motor Code](https://github.com/WEMARS2024/Software_MotorCode)
-[Archived Files](https://github.com/WEMARS2024/Software_Archived_Files)
-[Database](https://github.com/WEMARS2024/Software_Database)
-[Controller](https://github.com/WEMARS2024/Software_Controller)
-[Swerve](https://github.com/WEMARS2024/Swerve_Drive)
-[ROS2 Files](https://github.com/WEMARS2024/ROS2_Files)
+[Cameras](https://github.com/WEMARS2024/Software_Cameras) <br>
+[Website](https://github.com/WEMARS2024/Software_Website) <br>
+[IMU Simulation](https://github.com/WEMARS2024/Software_IMU_Simulation) <br>
+[CANCode](https://github.com/WEMARS2024/Software_CANCode) <br>
+[ROS2 Packages](https://github.com/WEMARS2024/Software_ROS2_Packages) <br>
+[Drive Station](https://github.com/WEMARS2024/Software_Drive_Station) <br>
+[IMU](https://github.com/WEMARS2024/Software_IMU) <br>
+[Radios](https://github.com/WEMARS2024/Software_Radios) <br>
+[GPS](https://github.com/WEMARS2024/Software_GPS) <br>
+[Motor Code](https://github.com/WEMARS2024/Software_MotorCode) <br>
+[Archived Files](https://github.com/WEMARS2024/Software_Archived_Files) <br>
+[Database](https://github.com/WEMARS2024/Software_Database) <br>
+[Controller](https://github.com/WEMARS2024/Software_Controller) <br>
+[Swerve](https://github.com/WEMARS2024/Swerve_Drive) <br>
+[ROS2 Files](https://github.com/WEMARS2024/ROS2_Files) <br>
 
 ## Mechanical
-[Chassis 2026](https://github.com/WEMARS2024/MECH-Chassis-2026)
-[Chassis](https://github.com/WEMARS2024/Mech-Chassis)
-[Wheels](https://github.com/WEMARS2024/Mech-Wheels)
-[Rocker Swivel](https://github.com/WEMARS2024/Mech-Rocker-Swivel)
-[Arm](https://github.com/WEMARS2024/Mech-Arm)
-[Benny](https://github.com/WEMARS2024/Mech_Benny)
-[Master Assembly](https://github.com/WEMARS2024/Mech-Master-Assembly)
-[Full Assembly](https://github.com/WEMARS2024/Mech-Full-Assembly)
-[CAD Files](https://github.com/WEMARS2024/Mechanical_CAD_Files)
+[Chassis 2026](https://github.com/WEMARS2024/MECH-Chassis-2026) <br>
+[Chassis](https://github.com/WEMARS2024/Mech-Chassis) <br>
+[Wheels](https://github.com/WEMARS2024/Mech-Wheels) <br>
+[Rocker Swivel](https://github.com/WEMARS2024/Mech-Rocker-Swivel) <br>
+[Arm](https://github.com/WEMARS2024/Mech-Arm) <br>
+[Benny](https://github.com/WEMARS2024/Mech_Benny) <br>
+[Master Assembly](https://github.com/WEMARS2024/Mech-Master-Assembly) <br>
+[Full Assembly](https://github.com/WEMARS2024/Mech-Full-Assembly) <br>
+[CAD Files](https://github.com/WEMARS2024/Mechanical_CAD_Files) <br>
 
 ## Misc
-[CIRC 2025](https://github.com/WEMARS2024/CIRC_2025)
-[Electrical Schematics](https://github.com/WEMARS2024/Electrical_Schematics)
+[CIRC 2025](https://github.com/WEMARS2024/CIRC_2025) <br>
+[Electrical Schematics](https://github.com/WEMARS2024/Electrical_Schematics) <br>
